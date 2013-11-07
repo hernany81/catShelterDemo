@@ -1,0 +1,51 @@
+
+<div class="page-header">
+	<h1>Create Cat</h1>
+</div>
+<alert level="{{message.level}}" text="{{message.text}}"/>
+<form name="form" data-ng-submit="save(item)" class="form-horizontal">
+
+	<div class="control-group" data-ng-class="{error: errors.name}">
+		<label class="control-label" for="name">Name</label>
+		<div class="controls">
+			<input type="text" id="name" name="name" required data-ng-model="item.name">
+			<span class="help-inline" data-ng-show="errors.name">{{errors.name}}</span>
+		</div>
+	</div>
+	
+	<div class="control-group" data-ng-class="{error: errors.coat}">
+		<label class="control-label" for="coat">Coat</label>
+		<div class="controls">
+			<div style="width: 220px;">
+				<select data-ng-required="true" data-my-selectize data-ng-options='coat.id as coat.label for coat in appData.coats'
+					data-ng-model='item.coat.id' data-selectize="{ labelField: 'label', valueField: 'id', searchField: 'label' }">
+					<option value="">Select a Coat</option>
+				</select>
+			</div>
+			<span class="help-inline" data-ng-show="errors.coat">{{errors.coat}}</span>
+		</div>
+	</div>
+	
+	<div class="control-group" data-ng-class="{error: errors.breed}">
+		<label class="control-label" for="breed">Breed</label>
+		<div class="controls" style="width: 220px;">
+			<select data-ng-required="true" data-my-selectize data-ng-options='breed.id as breed.name for breed in appData.breeds'
+				data-ng-model='item.breed.id' data-selectize="{ labelField: 'name', valueField: 'id', searchField: 'name' }">
+				<option value="">Select Breed</option>
+			</select>
+			<span class="help-inline" data-ng-show="errors.breed">{{errors.breed}}</span>
+		</div>
+	</div>
+	
+	<div class="control-group" data-ng-class="{error: errors.arrivalDate}">
+		<label class="control-label" for="arrivalDate">Arrival Date</label>
+		<div class="controls">
+			<input type="text" data-my-datepicker name="arrivalDate" required data-ng-model="item.arrivalDate" data-date-format="mm/dd/yyyy">
+			<span class="help-inline" data-ng-show="errors.arrivalDate">{{errors.arrivalDate}}</span>
+		</div>
+	</div>
+	
+	<div class="form-actions">
+		<button type="submit" class="btn btn-primary" data-ng-disabled="form.$invalid"><i class="icon-ok"></i> Create</button>
+	</div>
+</form>

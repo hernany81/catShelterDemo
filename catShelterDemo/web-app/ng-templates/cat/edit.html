@@ -1,0 +1,72 @@
+
+<div class="page-header">
+	<h1>Edit Cat</h1>
+</div>
+<alert level="{{message.level}}" text="{{message.text}}"/>
+<form name="form" data-ng-submit="update(item)" class="form-horizontal">
+	<input type="hidden" data-ng-model="item.id">
+	<input type="hidden" data-ng-model="item.version">
+
+	<div class="control-group" data-ng-class="{error: errors.name}">
+		<label class="control-label" for="name">Name</label>
+		<div class="controls">
+			<input type="text" id="name" name="name" required data-ng-model="item.name">
+			<span class="help-inline" data-ng-show="errors.name">{{errors.name}}</span>
+		</div>
+	</div>
+	
+	<div class="control-group" data-ng-class="{error: errors.coat}">
+		<label class="control-label" for="coat">Coat</label>
+		<div class="controls">
+			<div style="width: 220px;">
+				<select data-ng-required="true" data-my-selectize data-ng-options='coat.id as coat.label for coat in appData.coats'
+					data-ng-model='item.coat.id' data-selectize="{ labelField: 'label', valueField: 'id', searchField: 'label' }">
+					<option value="">Select a Coat</option>
+				</select>
+			</div>
+			<span class="help-inline" data-ng-show="errors.coat">{{errors.coat}}</span>
+		</div>
+	</div>
+	
+	<div class="control-group" data-ng-class="{error: errors.breed}">
+		<label class="control-label" for="breed">Breed</label>
+		<div class="controls" style="width: 220px;">
+			<select data-ng-required="true" data-my-selectize data-ng-options='breed.id as breed.name for breed in appData.breeds'
+				data-ng-model='item.breed.id' data-selectize="{ labelField: 'name', valueField: 'id', searchField: 'name' }">
+				<option value="">Select Breed</option>
+			</select>
+			<span class="help-inline" data-ng-show="errors.breed">{{errors.breed}}</span>
+		</div>
+	</div>
+	
+	<div class="control-group" data-ng-class="{error: errors.arrivalDate}">
+		<label class="control-label" for="arrivalDate">Arrival Date</label>
+		<div class="controls">
+			<input type="text" data-my-datepicker class="span2" data-ng-model="item.arrivalDate" data-date-format="mm/dd/yyyy">
+			<span class="help-inline" data-ng-show="errors.arrivalDate">{{errors.arrivalDate}}</span>
+		</div>
+	</div>
+	
+	<div class="form-actions">
+		<button type="submit" class="btn btn-primary" data-ng-disabled="form.$invalid"><i class="icon-ok"></i> Update</button>
+		<a class="btn btn-danger" role="button" data-my-modal href="#deleteConfirmationModal" data-ng-click="delete(item)"><i class="icon-trash"></i> Delete</a>
+	</div>
+</form>
+
+<!-- Delete confirmation Modal -->
+        
+<div id="deleteConfirmationModal" class="modal hide fade" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal"
+			aria-hidden="true">x</button>
+		<h3 id="myModalLabel">Confirmation</h3>
+	</div>
+	<div class="modal-body">
+		<p>Are you sure you want to delete this cat?</p>
+	</div>
+	<div class="modal-footer">
+		<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+		<button class="btn btn-danger" data-dismiss="modal" data-ng-click="deleteConfirmed()">Confirm</button>
+	</div>
+</div>
