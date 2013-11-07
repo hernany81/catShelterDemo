@@ -25,4 +25,10 @@ modules = {
 		
 		resource url: 'js/cat-scaffolding.js'
 	}
+	
+	'cat-shelter' {
+		dependsOn 'bootstrap_utils'
+		
+		resource url: 'css/main.css'
+	}
 }

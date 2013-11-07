@@ -20,6 +20,7 @@
 	<r:require modules="jquery"/>
 	<r:require modules="bootstrap"/>
 	<r:require modules="bootstrap_utils"/>
+	<r:require modules="cat-shelter"/>
 
 	<r:layoutResources />
 	<g:layoutHead />
