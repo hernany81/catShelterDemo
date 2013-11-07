@@ -61,7 +61,6 @@ class BreedController {
 				responseJson.message = message(code: 'default.optimistic.locking.failure',
 						args: [message(code: 'breed.label', default: 'Breed')],
 						default: 'Another user has updated this Breed while you were editing')
-				cache false
 				render responseJson as JSON
 				return
             }

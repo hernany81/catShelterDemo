@@ -61,7 +61,6 @@ class CoatController {
 				responseJson.message = message(code: 'default.optimistic.locking.failure',
 						args: [message(code: 'coat.label', default: 'Coat')],
 						default: 'Another user has updated this Coat while you were editing')
-				cache false
 				render responseJson as JSON
 				return
             }

@@ -78,7 +78,6 @@ class CatController {
 				responseJson.message = message(code: 'default.optimistic.locking.failure',
 						args: [message(code: 'cat.label', default: 'Cat')],
 						default: 'Another user has updated this Cat while you were editing')
-				cache false
 				render responseJson as JSON
 				return
             }
