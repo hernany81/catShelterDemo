@@ -16,6 +16,8 @@ class CatController {
     def index() { }
 
     def list() {
+		params.sort = params.sort ?: 'name';
+		params.order = params.order ?: 'asc';
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
 		response.setIntHeader('X-Pagination-Total', Cat.count())
 		
