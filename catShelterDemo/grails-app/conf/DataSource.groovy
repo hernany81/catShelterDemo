@@ -26,8 +26,11 @@ environments {
     production {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:h2:prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
+            url = "jdbc:mysql://localhost:3306/cat_shelter"
             pooled = true
+			username = "demo"
+			password = "demo"
+			dialect = org.hibernate.dialect.MySQL5InnoDBDialect
             properties {
                maxActive = -1
                minEvictableIdleTimeMillis=1800000
