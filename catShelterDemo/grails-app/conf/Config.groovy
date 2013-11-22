@@ -77,7 +77,7 @@ log4j = {
     
     appenders {
         console name:'stdout', layout:pattern(conversionPattern: '[%t] %d{dd/MM/yyyy HH:mm:ss,SSS} %-5p %c %x - %m%n'), threshold: Level.WARN;
-		file	name:'generalFile', append: false, file:"${System.env['user.home']?:'c:'}/catShelter.log", layout:pattern(conversionPattern: '[%t] %d{dd/MM/yyyy HH:mm:ss,SSS} %-5p %c %x - %m%n');
+		file	name:'generalFile', append: false, file:"${System.properties['catalina.home'] ?: System.properties['user.home']}/logs/catShelter.log", layout:pattern(conversionPattern: '[%t] %d{dd/MM/yyyy HH:mm:ss,SSS} %-5p %c %x - %m%n');
     }
 	
 	root {
